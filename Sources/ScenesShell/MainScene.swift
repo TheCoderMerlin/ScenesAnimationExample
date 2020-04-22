@@ -1,4 +1,3 @@
-import Igis
 import Scenes
 
 /*
@@ -9,7 +8,12 @@ import Scenes
  */
 class MainScene : Scene {
 
+    let backgroundLayer = BackgroundLayer()
+    let foregroundLayer = ForegroundLayer()
+
     init() {
         super.init(name:"Main")
+        insert(layer:backgroundLayer, at:.back)
+        insert(layer:foregroundLayer, at:.front)
     }
 }

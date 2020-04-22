@@ -1,4 +1,3 @@
-import Igis
 import Scenes
 
 /*
@@ -14,6 +13,4 @@ class ShellDirector : Director {
     override func framesPerSecond() -> Int {
         return 30
     }
-
 }
-
