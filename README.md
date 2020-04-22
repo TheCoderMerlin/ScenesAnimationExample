@@ -1,4 +1,4 @@
-# ScenesShell
+# ScenesAnimationExample
 
-An empty shell to serve as a starting point for using Scenes.
+This project demonstrates the use on Animations and the AnimationManager.
 
