@@ -33,11 +33,11 @@ class PlayButton : RenderableEntity, EntityMouseClickHandler, EntityMouseEnterHa
     }
     
     override func setup(canvasSize:Size, canvas:Canvas) {
-        let tween = Tween(from:1.0, to:0.7, duration:0.5, ease:.inQuad) {
+        let tween = Tween(from:1.0, to:0.7, duration:0.3, ease:.inQuad) {
             self.setAlpha(alpha:Alpha(alphaValue:$0))
         }
         mouseEnterAnimation = Animation(tween:tween)
-        mouseLeaveAnimation = mouseEnterAnimation!.inverse()
+        mouseLeaveAnimation = mouseEnterAnimation!.inverse
         
         dispatcher.registerEntityMouseClickHandler(handler:self)
         dispatcher.registerEntityMouseEnterHandler(handler:self)
