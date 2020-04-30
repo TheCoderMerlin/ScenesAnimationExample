@@ -1,4 +1,10 @@
 # ScenesAnimationExample
 
-This project demonstrates the use on Animations and the AnimationManager.
+This example demonstrates:
+* Use of the AnimationManager
+* Demonstrates various animations
+
+![Image of Scenes Animation Example](images/ScenesAnimationExample.png)
+
+
 
