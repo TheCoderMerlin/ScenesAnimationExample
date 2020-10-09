@@ -1,5 +1,7 @@
 import Igis
 import Scenes
+import ScenesAnimations
+
 
 /*
  This class is responsible for the foreground Layer.
@@ -14,7 +16,7 @@ class ForegroundLayer : Layer {
                     MovingRectangle(yPos:3, color:Color(.magenta), label:"InOutQuart", ease:.inOutQuart),
                     MovingRectangle(yPos:4, color:Color(.crimson), label:"InOutQuint", ease:.inOutQuint),
                     MovingRectangle(yPos:5, color:Color(.limegreen), label:"InOutSine", ease:.inOutSine),
-                    MovingRectangle(yPos:6, color:Color(.teal), label:"InOutExponential", ease:.inOutExponential),
+                    MovingRectangle(yPos:6, color:Color(.teal), label:"InOutExponential", ease:.inOutExpo),
                     MovingRectangle(yPos:7, color:Color(.gold), label:"InOutBack", ease:.inOutBack),
                     MovingRectangle(yPos:8, color:Color(.magenta), label:"InOutCirc", ease:.inOutCirc),
                     MovingRectangle(yPos:9, color:Color(.crimson), label:"InOutBounce", ease:.inOutBounce),

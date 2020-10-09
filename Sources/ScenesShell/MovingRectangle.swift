@@ -1,5 +1,6 @@
 import Igis
 import Scenes
+import ScenesAnimations
 
 class MovingRectangle : RenderableEntity {
     let fillStyle : FillStyle
@@ -26,12 +27,11 @@ class MovingRectangle : RenderableEntity {
         let fromPoint = rectangle.rect.topLeft
         let toPoint = Point(x:canvasSize.width - 200, y:rectangle.rect.topLeft.y)
         let tween = Tween(from:fromPoint, to:toPoint, duration:3, ease:ease, update: {self.rectangle.rect.topLeft = $0})
-        
-        animation = Animation(tween:tween)
-        animation!.reverse = true
-        animation!.loop = true
-        
-        animationManager.run(animation:animation!)
+        tween.repeatStyle = .forever
+        tween.direction = .alternate
+
+        animationController.register(animation: tween)
+        animation?.play()
     }
 
     override func render(canvas:Canvas) {

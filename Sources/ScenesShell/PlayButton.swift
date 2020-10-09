@@ -1,5 +1,6 @@
 import Igis
 import Scenes
+import ScenesAnimations
 
 class PlayButton : RenderableEntity, EntityMouseClickHandler, EntityMouseEnterHandler, EntityMouseLeaveHandler {
     let boundRect : Rect
@@ -8,8 +9,7 @@ class PlayButton : RenderableEntity, EntityMouseClickHandler, EntityMouseEnterHa
     let pause : [CanvasObject]
 
     var playing = true
-    var mouseEnterAnimation : Animation? = nil
-    var mouseLeaveAnimation : Animation? = nil
+    var mouseTween : Tween<Double>? = nil
     var needToRenderCursor = false
     var cursorStyle = CursorStyle(style:.defaultCursor) {
         didSet {needToRenderCursor = true}
@@ -33,11 +33,10 @@ class PlayButton : RenderableEntity, EntityMouseClickHandler, EntityMouseEnterHa
     }
     
     override func setup(canvasSize:Size, canvas:Canvas) {
-        let tween = Tween(from:1.0, to:0.7, duration:0.3, ease:.inQuad) {
+        mouseTween = Tween(from:1.0, to:0.7, duration:0.3, ease:.inQuad) {
             self.setAlpha(alpha:Alpha(alphaValue:$0))
         }
-        mouseEnterAnimation = Animation(tween:tween)
-        mouseLeaveAnimation = mouseEnterAnimation!.inverse
+        animationController.register(animation: mouseTween!)
         
         dispatcher.registerEntityMouseClickHandler(handler:self)
         dispatcher.registerEntityMouseEnterHandler(handler:self)
@@ -79,13 +78,13 @@ class PlayButton : RenderableEntity, EntityMouseClickHandler, EntityMouseEnterHa
 
     func onEntityMouseEnter(globalLocation:Point) {
         cursorStyle = CursorStyle(style:.pointer)
-        mouseLeaveAnimation!.terminate()
-        animationManager.run(animation:mouseEnterAnimation!)
+        mouseTween!.direction = .reverse
+        mouseTween!.play() 
     }
 
     func onEntityMouseLeave(globalLocation:Point) {
         cursorStyle = CursorStyle(style:.defaultCursor)
-        mouseEnterAnimation!.terminate()
-        animationManager.run(animation:mouseLeaveAnimation!)
+        mouseTween!.direction = .reverse
+        mouseTween!.play() 
     }
 }

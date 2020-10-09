@@ -1,5 +1,6 @@
 import Igis
 import Scenes
+import ScenesAnimations
 
 /*
  This class is responsible for the interaction Layer.
@@ -20,7 +21,7 @@ class InteractionLayer : Layer {
 
     func play(_ playing:Bool) {
         playing
-          ? animationManager.playAll()
-          : animationManager.pauseAll()
+          ? animationController.playAll()
+          : animationController.pauseAll()
     }
 }
