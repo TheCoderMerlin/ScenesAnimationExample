@@ -8,7 +8,6 @@ class MovingRectangle : RenderableEntity {
     let text : Text
 
     var ease : EasingStyle
-    var animation : Animation? = nil
 
     init(yPos:Int, color:Color, label:String, ease:EasingStyle) {
         fillStyle = FillStyle(color:color)
@@ -31,7 +30,7 @@ class MovingRectangle : RenderableEntity {
         tween.direction = .alternate
 
         animationController.register(animation: tween)
-        animation?.play()
+        tween.play()
     }
 
     override func render(canvas:Canvas) {
